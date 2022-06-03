@@ -14,5 +14,5 @@ import java.util.List;
 public class Product {
     private String product;
     private String client;
-    private String quantity;
+    private int quantity;
 }

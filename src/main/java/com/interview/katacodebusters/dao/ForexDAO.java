@@ -1,6 +1,6 @@
 package com.interview.katacodebusters.dao;
 
-import com.interview.katacodebusters.models.Price;
+import com.interview.katacodebusters.repositories.ForexRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -9,20 +9,15 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-@Component
 @Slf4j
 public class ForexDAO {
 
-    private static final String FOREX_CSV = "src/main/resources/Forex.csv";
-
-    public Map<String, Double> getRateExchangeMap() throws IOException {
-        var reader = Files.newBufferedReader(Paths.get(FOREX_CSV));
+    public static Map<String, Double> getRateExchangeMap() throws IOException {
+        String forexCSV = ForexRepo.getForexPath();
+        var reader = Files.newBufferedReader(Paths.get(forexCSV));
         Map<String, Double> exchangeRate = new HashMap<>();
         exchangeRate.put("EUR", 1.0);
         try (reader) {

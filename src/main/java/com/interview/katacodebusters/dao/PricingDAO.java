@@ -1,6 +1,7 @@
 package com.interview.katacodebusters.dao;
 
 import com.interview.katacodebusters.models.Price;
+import com.interview.katacodebusters.repositories.PriceRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -15,10 +16,10 @@ import java.util.List;
 @Component
 @Slf4j
 public class PricingDAO {
-    private static final String PRICES_CSV = "src/main/resources/prices.csv";
 
-    public List<Price> getPortfolios() throws IOException {
-        var reader = Files.newBufferedReader(Paths.get(PRICES_CSV));
+    public static List<Price> getPortfolios() throws IOException {
+        String pricesCSV = PriceRepo.getPriceCSV();
+        var reader = Files.newBufferedReader(Paths.get(pricesCSV));
         List<Price> prices = new ArrayList<>();
         try (reader) {
             var records = CSVFormat.DEFAULT.parse(reader);
