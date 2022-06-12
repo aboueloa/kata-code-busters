@@ -1,6 +1,6 @@
 # kata-code-busters
 ## Prerequisites
-jdk 17
+jdk 17(maybe 11 is enough)
 ## Application launch
 ```
 mvn clean install
