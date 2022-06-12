@@ -16,7 +16,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.interview.katacodebusters.controllers"))
-                .paths(PathSelectors.any())
+                .paths(PathSelectors.ant("/v2/api-docs"))
                 .build();
     }
 }
